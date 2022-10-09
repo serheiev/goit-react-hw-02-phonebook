@@ -1,6 +1,5 @@
 import { Button } from 'components/Button/Button';
-import { InputName } from 'components/InputName/InputName';
-import { InputNumber } from 'components/InputNumber/InputNumber';
+import { Input } from 'components/InputName/Input';
 import { Component } from 'react';
 
 export class Form extends Component {
@@ -31,7 +30,7 @@ export class Form extends Component {
       <form onSubmit={this.handleSubmit}>
         <label>
           <span>Name</span>
-          <InputName
+          <Input
             name="name"
             value={this.state.name}
             type={'text'}
@@ -44,7 +43,7 @@ export class Form extends Component {
 
         <label>
           <span>Number</span>
-          <InputNumber
+          <Input
             name="number"
             value={this.state.number}
             type={'tel'}
@@ -53,7 +52,7 @@ export class Form extends Component {
             pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
             title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
           />
-          <Button type="submit" text={'Create contact'}></Button>
+          <Button type="submit" text="Create contact" />
         </label>
       </form>
     );

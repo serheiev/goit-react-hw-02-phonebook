@@ -2,8 +2,8 @@ import { Component } from 'react';
 import { Section } from './Section/Section';
 import { Form } from './Form/Form';
 import { Contacts } from './Contact/Contact';
-import { nanoid } from 'nanoid';
 import { InputFilter } from './InputFilter/InputFilter';
+import { nanoid } from 'nanoid';
 
 export class App extends Component {
   state = {
@@ -47,6 +47,12 @@ export class App extends Component {
     this.setState(() => ({ filter: value }));
   };
 
+  deleteContact = contactId => {
+    this.setState(prevState => ({
+      contacts: prevState.contacts.filter(contact => contact.id !== contactId),
+    }));
+  };
+
   render() {
     const { contacts, filter } = this.state;
     const filteredContacts = contacts.filter(el =>
@@ -65,7 +71,7 @@ export class App extends Component {
             filter={filter}
             onChange={this.filterContacts}
           />
-          <Contacts contacts={filteredContacts} />
+          <Contacts contacts={filteredContacts} onDelete={this.deleteContact} />
           {/* <InputFilter onChange={this.filterContacts} />
           <Contacts contacts={filter ? filter : contacts} /> */}
         </Section>
