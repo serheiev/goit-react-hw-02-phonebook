@@ -12,7 +12,11 @@ export class App extends Component {
       { id: 'id-2', name: 'Hermione Kline', number: '443-89-12' },
       { id: 'id-3', name: 'Eden Clements', number: '645-17-79' },
       { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
+      { id: 'id-5', name: 'Ann Kopen', number: '456-12-58' },
+      { id: 'id-6', name: 'Daria Send', number: '258-16-97' },
+      { id: 'id-7', name: 'Kian Smith', number: '228-02-04' },
     ],
+    filter: '',
   };
 
   contactSubmit = data => {
@@ -20,7 +24,6 @@ export class App extends Component {
       id: nanoid(),
       ...data,
     };
-
     if (this.state.contacts.map(el => el.name).includes(contact.name)) {
       return alert(`${contact.name} is already in contacts`);
     }
@@ -31,7 +34,24 @@ export class App extends Component {
     });
   };
 
+  // filterContacts = ({ target: { value } }) => {
+  //   this.setState(prevState => {
+  //     return {
+  //       filter: prevState.contacts.filter(el =>
+  //         el.name.toLocaleLowerCase().includes(value.toLocaleLowerCase())
+  //       ),
+  //     };
+  //   });
+  // };
+  filterContacts = ({ target: { value } }) => {
+    this.setState(() => ({ filter: value }));
+  };
+
   render() {
+    const { contacts, filter } = this.state;
+    const filteredContacts = contacts.filter(el =>
+      el.name.toLocaleLowerCase().includes(filter.toLocaleLowerCase())
+    );
     return (
       <>
         <Section title="Phonebook">
@@ -39,8 +59,15 @@ export class App extends Component {
         </Section>
 
         <Section title="Contacts">
-          <InputFilter />
-          <Contacts contacts={this.state.contacts} />
+          <InputFilter
+            placeholder="name in contacts"
+            type="text"
+            filter={filter}
+            onChange={this.filterContacts}
+          />
+          <Contacts contacts={filteredContacts} />
+          {/* <InputFilter onChange={this.filterContacts} />
+          <Contacts contacts={filter ? filter : contacts} /> */}
         </Section>
       </>
     );
