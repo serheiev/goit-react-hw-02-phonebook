@@ -1,5 +1,5 @@
 import { Button } from 'components/Button/Button';
-import { Input } from 'components/InputName/Input';
+import { Input } from 'components/Input/Input';
 import { Component } from 'react';
 
 export class Form extends Component {

@@ -7,6 +7,7 @@ export const Input = ({
   onChange,
   name,
   pattern,
+  filter,
 }) => {
   return (
     <input
@@ -16,6 +17,7 @@ export const Input = ({
       name={name}
       pattern={pattern}
       title={title}
+      filter={filter}
       required
     />
   );
@@ -28,4 +30,5 @@ Input.propTypes = {
   onChange: PropTypes.func.isRequired,
   name: PropTypes.string.isRequired,
   pattern: PropTypes.string.isRequired,
+  filter: PropTypes.string,
 };

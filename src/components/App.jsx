@@ -2,8 +2,9 @@ import { Component } from 'react';
 import { Section } from './Section/Section';
 import { Form } from './Form/Form';
 import { Contacts } from './Contact/Contact';
-import { InputFilter } from './InputFilter/InputFilter';
+// import { InputFilter } from './InputFilter/InputFilter';
 import { nanoid } from 'nanoid';
+import { Input } from './Input/Input';
 
 export class App extends Component {
   state = {
@@ -65,12 +66,21 @@ export class App extends Component {
         </Section>
 
         <Section title="Contacts">
-          <InputFilter
+          <Input
             placeholder="name in contacts"
             type="text"
             filter={filter}
             onChange={this.filterContacts}
+            title=""
+            name="search"
+            pattern=""
           />
+          {/* <InputFilter
+            placeholder="name in contacts"
+            type="text"
+            filter={filter}
+            onChange={this.filterContacts}
+          /> */}
           <Contacts contacts={filteredContacts} onDelete={this.deleteContact} />
           {/* <InputFilter onChange={this.filterContacts} />
           <Contacts contacts={filter ? filter : contacts} /> */}
