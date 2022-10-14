@@ -1,3 +1,4 @@
+import { Button } from 'components/Button/Button';
 import PropTypes from 'prop-types';
 
 export const ContactsItem = ({ name, number, onDelete, id }) => {
@@ -6,9 +7,7 @@ export const ContactsItem = ({ name, number, onDelete, id }) => {
       <span>
         {name} {number}
       </span>
-      <button type="button" onClick={() => onDelete(id)}>
-        Delete
-      </button>
+      <Button type="button" text="Delete" onDelete={() => onDelete(id)} />
     </li>
   );
 };
